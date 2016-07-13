@@ -1,0 +1,23 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    <!-- Brand and toggle get grouped for better mobile display -->
+    .navbar-header
+      %button.navbar-toggle.collapsed{ type: 'button', 'aria-expanded' => false, :data => {'target' => '#bs-example-navbar-collapse-1', 'toggle' => 'collapse'}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to image_tag("icons/tappr-logo-white.png", alt: "Tappr brand", class: "navbar-brand"), "http://mytappr.com"
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      %ul.nav.navbar-nav
+        %li.active
+          = link_to 'ideas', '/ideas'
+          %span.sr-only(current)
+
+      %ul.nav.navbar-nav.navbar-right
+        %form.navbar-form.navbar-left{"role" => "search"}
+          .form-group
+            %input.form-control{"type" => "text", "placeholder" => "Search"}
+          %button.btn.btn-default{'type' => 'submit'} Submit

@@ -1,12 +1,8 @@
 %p#notice= notice
 
-%p
-  %strong Name:
-  = @idea.name
+%h4= link_to @idea.name, edit_idea_path(@idea)
 
-%p
-  %strong Description:
-  = @idea.description
+%p= @idea.description
 
-.btn.btn-default= link_to 'Edit', edit_idea_path(@idea) |
+.btn.btn-default= link_to 'New Idea', new_idea_path |
 .btn.btn-default= link_to 'Back', ideas_path

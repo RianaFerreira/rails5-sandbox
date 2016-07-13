@@ -1,0 +1,7 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      = link_to 'X', idea_path(model), method: :delete, data: {'confirm' => 'Are you sure?'}, class: 'btn btn-default'
+      = link_to name, edit_idea_path(model)
+  .panel-body
+    %p= description

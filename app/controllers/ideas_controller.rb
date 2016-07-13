@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = cell(:idea, collection: Idea.all)
   end
 
   # GET /ideas/1

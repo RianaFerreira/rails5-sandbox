@@ -1,17 +1,12 @@
 %p#notice= notice
 
-%h1 Ideas
+%h1 Experimental Ideas
 
-- @ideas.each do |idea|
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title= idea.name
-    .panel-body
-      %p= idea.description
-      %p
-        .btn.btn-default= link_to 'Show', idea
-        .btn.btn-default= link_to 'Edit', edit_idea_path(idea)
-        .btn.btn-default= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }
 %br
+.btn.btn-default= link_to 'New Idea', new_idea_path
+%br
+%br
+
+= @ideas
 
 .btn.btn-default= link_to 'New Idea', new_idea_path

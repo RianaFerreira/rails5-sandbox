@@ -18,4 +18,5 @@
       = f.text_area :description, class: 'form-control'
 
     .form-group
-      = f.submit :class => 'btn btn-default'
+      = f.submit :class => 'btn btn-default' |
+      .btn.btn-default= link_to 'Cancel', ideas_path
