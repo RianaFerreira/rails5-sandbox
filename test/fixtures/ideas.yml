@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
+idea_1:
+  name: Idea 1
+  description: First idea
 
-two:
-  name: MyString
-  description: MyText
+idea_2:
+  name: Idea 2
+  description: Second idea

@@ -1,4 +1,5 @@
-%p#notice= notice
+- if notice.present?
+  %p.alert.alert-success#notice= notice
 
 %h4= link_to @idea.name, edit_idea_path(@idea)
 
