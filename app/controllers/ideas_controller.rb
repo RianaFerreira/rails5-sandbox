@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = cell(:idea, collection: Idea.all)
+    @ideas = cell(:idea, collection: Idea.order(created_at: :desc))
   end
 
   # GET /ideas/1
@@ -28,6 +28,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
+        IdeaBroadcastJob.perform_later @idea
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
       else
         format.html { render :new }
