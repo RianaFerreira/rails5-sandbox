@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to image_tag("icons/tappr-logo-white.png", alt: "Tappr brand", class: "navbar-brand"), "http://mytappr.com"
+      = link_to image_tag("icons/logo.png", alt: "brand", class: "navbar-brand"), "https://github.com/RianaFerreira"
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
@@ -17,6 +17,15 @@
           %span.sr-only(current)
 
       %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %strong.text-muted
+            Signed in as
+            = current_user.email |
+            = link_to "Sign out", sign_out_path
+        - else
+          = render partial: "sessions/sign_in" |
+          = link_to "Sign up", sign_up_path
+
         %form.navbar-form.navbar-left{"role" => "search"}
           .form-group
             %input.form-control{"type" => "text", "placeholder" => "Search"}

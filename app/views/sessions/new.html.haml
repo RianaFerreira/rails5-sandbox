@@ -1,0 +1,12 @@
+%h1 Sign In
+
+.form-inline
+  = form_tag sessions_path do
+    .form-group
+      = label_tag :email
+      = text_field_tag :email, params[:email], class: "form-control mb-2 mr-sm-2 mb-sm-0"
+
+      = label_tag :password
+      = password_field_tag :password, nil, placeholder: "password", class: "form-control"
+
+    = submit_tag "Sign in", class: "btn btn-default"

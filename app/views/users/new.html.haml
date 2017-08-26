@@ -1,0 +1,26 @@
+%h1 Sign Up
+
+.form
+  = form_for @user do |f|
+    .form-group
+      - if @user.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @user.errors.full_messages
+              %li= message
+
+    .form-group
+      .form-control-label= f.label :email
+      = f.text_field :email, class: "form-`control"
+
+    .form-group
+      .form-control-label= f.label :password
+      = f.password_field :password, class: "form-control"
+
+    .form-group
+      .form-control-label= f.label :password_confirmation
+      = f.password_field :password_confirmation, class: "form-control"
+
+    .form-group
+      .button= f.submit "Sign up"
