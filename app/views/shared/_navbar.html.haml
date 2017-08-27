@@ -18,15 +18,7 @@
 
       %ul.nav.navbar-nav.navbar-right
         - if current_user
-          %strong.text-muted
-            Signed in as
-            = current_user.email |
-            = link_to "Sign out", sign_out_path
+          = render partial: "shared/search"
+          = render partial: "sessions/sign_out"
         - else
-          = render partial: "sessions/sign_in" |
-          = link_to "Sign up", sign_up_path
-
-        %form.navbar-form.navbar-left{"role" => "search"}
-          .form-group
-            %input.form-control{"type" => "text", "placeholder" => "Search"}
-          %button.btn.btn-default{'type' => 'submit'} Submit
+          = render partial: "sessions/sign_in"

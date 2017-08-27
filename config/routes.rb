@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   # end
 
   get "welcome", to: "welcome#show"
-  
+
   resources :sessions, only: [:create, :delete]
   resources :users, only: [:create]
   resources :ideas
 
-  root "users#new"
+  root "welcome#show"
 end
