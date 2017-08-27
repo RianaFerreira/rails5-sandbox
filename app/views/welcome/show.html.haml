@@ -1,0 +1,31 @@
+.jumbotron.jumbotron-fluid
+  %h1 Explore programming concepts
+  .lead Understand some patterns that solve problems often faced when building applications
+  %strong Inspiration
+  = link_to "Enhanced Rails Architecture", "https://github.com/CodeRocketCo/enhanced-rails-architecture"
+  %hr.my-4
+
+  .row
+    .col-sm-6.col-md-4
+      .card
+        .card-body
+        %h4.card-title Multi-Tenancy
+        %p.car-text Custom scopes vs the Apartment gem
+        = link_to "Apartment", "https://github.com/influitive/apartment", class: "badge badge-light"
+        = link_to "Custom scopes", "https://github.com/railscasts/388-multitenancy-with-scopes", class: "badge badge-light"
+
+    .col-sm-6.col-md-4
+      .card
+        .card-body
+          %h4.card-title Managing view helpers
+          %p.card-text Decorator PORO vs Draper gem
+          = link_to "Draper", "https://github.com/drapergem/draper", class: "badge badge-light"
+          = link_to "Decorator PORO", "https://robots.thoughtbot.com/evaluating-alternative-decorator-implementations-in", class: "badge badge-light"
+
+    .col-sm-6.col-md-4
+      .card
+        .card-body
+          %h4.card-title File uploads
+          %p.card-text ActiveStorage vs CarrierWave gem
+          = link_to "ActiveStorage", "https://github.com/rails/rails/tree/master/activestorage", class: "badge badge-light"
+          = link_to "CarrierWave", "https://github.com/carrierwaveuploader/carrierwave", class: "badge badge-light"

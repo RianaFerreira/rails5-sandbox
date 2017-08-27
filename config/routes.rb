@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   #   end
   # end
 
+  get "welcome", to: "welcome#show"
+  
   resources :sessions, only: [:create, :delete]
   resources :users, only: [:create]
   resources :ideas
