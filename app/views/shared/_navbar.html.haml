@@ -11,10 +11,11 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
-      %ul.nav.navbar-nav
-        %li.active
-          = link_to 'ideas', '/ideas'
-          %span.sr-only(current)
+      -if current_user
+        %ul.nav.navbar-nav
+          %li.active
+            = link_to 'ideas', '/ideas'
+            %span.sr-only(current)
 
       %ul.nav.navbar-nav.navbar-right
         - if current_user

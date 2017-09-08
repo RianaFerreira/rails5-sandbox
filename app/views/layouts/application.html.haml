@@ -9,7 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = render partial: "shared/flash"
     = render partial: "shared/navbar"
+    = render partial: "shared/flash"
     .container= yield
     = render partial: "shared/footer"

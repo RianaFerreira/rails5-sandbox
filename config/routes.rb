@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   get "sign_up", to: "users#new", as: "sign_up"
   get "sign_out", to: "sessions#destroy", as: "sign_out"
 
+  get "welcome", to: "welcome#show"
+
+  resources :sessions, only: [:create, :delete]
+  resources :users, only: [:create]
+  resources :tenants, only: [:index]
+  resources :ideas
+
   # constraints subdomain: "administration" do
   #   scope module: "administration" do
   #     match "organisation_sign_in/:id" => "organisation_sign_in#{create}",
@@ -21,11 +28,7 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  get "welcome", to: "welcome#show"
-
-  resources :sessions, only: [:create, :delete]
-  resources :users, only: [:create]
-  resources :ideas
+  get "", to: "tenants#index", constraints: { subdomain: /.+/ }
 
   root "welcome#show"
 end

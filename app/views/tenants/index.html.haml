@@ -1,0 +1,13 @@
+.jumbotron.text-center
+  %h2.jumbotron-heading Application Tenants
+  .lead.text-muted configuration details for each tenant
+
+.row
+  - @tenants.each do |tenant|
+    .col-sm-6.col-md-4
+      .card
+        .card-body
+          %h4.card-title= tenant.name
+          %p.card-text
+            %strong subdomain:
+            = tenant.subdomain

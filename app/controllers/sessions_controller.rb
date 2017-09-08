@@ -5,21 +5,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @current_user.present?
-      session[:user_id] = @current_user.id
-      redirect_to ideas_path
-    else
-      flash.now.alert = "Invalid email or password"
-      render "new"
-    end
+    redirect_to sign_in_redirect, flash: sign_in_flash_message
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to welcome_path, notice: "Signed out!"
+    redirect_to welcome_path, flash: {success: "Signed out!"}
   end
 
   private
+
+  def session_params
+    params.permit(:email, :password)
+  end
 
   def authenticate_user
     # http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
@@ -28,7 +26,20 @@ class SessionsController < ApplicationController
       authenticated(session_params[:password])
   end
 
-  def session_params
-    params.permit(:email, :password)
+  def sign_in_redirect
+    set_session_user ?  ideas_path : welcome_path
+  end
+
+  def set_session_user
+    return if @current_user.blank?
+    session[:user_id] = @current_user.id
+  end
+
+  def sign_in_flash_message
+    if session[:user_id].present?
+      { success: "Signed in!" }
+    else
+      { error: "Invalid email or password!" }
+    end
   end
 end

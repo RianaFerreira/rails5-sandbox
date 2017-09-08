@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, except: [:index, :new, :create]
 
   # GET /ideas
   # GET /ideas.json
@@ -9,16 +9,11 @@ class IdeasController < ApplicationController
 
   # GET /ideas/1
   # GET /ideas/1.json
-  def show
-  end
+  def show; end
 
   # GET /ideas/new
   def new
     @idea = Idea.new
-  end
-
-  # GET /ideas/1/edit
-  def edit
   end
 
   # POST /ideas
@@ -28,20 +23,23 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        IdeaBroadcastJob.perform_later @idea
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        IdeaBroadcastJob.perform_later(@idea)
+        format.html { redirect_to(@idea, flash: { success: I18n.t(".success") }) }
       else
         format.html { render :new }
       end
     end
   end
 
+  # GET /ideas/1/edit
+  def edit; end
+
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def update
     respond_to do |format|
       if @idea.update(idea_params)
-        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        format.html { redirect_to(@idea, flash: { success: I18n.t(".success") }) }
       else
         format.html { render :edit }
       end
@@ -53,7 +51,7 @@ class IdeasController < ApplicationController
   def destroy
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to(ideas_url, flash: { success: I18n.t(".success") }) }
     end
   end
 
